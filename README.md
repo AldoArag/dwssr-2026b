@@ -27,7 +27,7 @@ se desarrollara a lo largo del curso.
 |Codigo|Descripcion|
 |----|-----|
 |feat: ✨|Nueva Funcionalidad |
-|fix: 🐛Correcion de Errores |
+|fix: 🐛|Correcion de Errores |
 |docs: 📚|Cambios en la documentacion |
 |style: 👁️|Cambio de aspecto visual |
 |refactor: 🦿|Refactorizacion de codigo|
