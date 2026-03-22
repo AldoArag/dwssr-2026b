@@ -5,9 +5,11 @@
  */
 
 import app from '../app.js';
-var debug = require('debug')('dwssr:server');
-var info = require('debug')('dwssr:info');
-var http = require('http');
+import debug from 'debug';
+const serverDebug = debug('dwssr:server');
+const info = debug('dwssr:info');
+import http from 'http';
+
 
 /**
  * Get port from environment and store in Express.
