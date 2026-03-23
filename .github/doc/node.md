@@ -22,3 +22,22 @@ arquitectura del proyecto.
 
 El presente proyecto esta desarrollado
 en ExpressJs
+
+Migrar 
+
+# 😈 Nodemon
+[Nodemon](https://nodemon.io/) es un paquete que actua como 
+un _wrapper_ (envoltorio) para Node.Js
+Su funcion es observar archivos
+en el directorio de tu proyecto 
+y reinicia automaticamente la 
+aplicacion cuando decteta cambios
+guardados.
+
+# ✂️ Aliases
+
+los **import Aliases** tambien conocidos como
+_path aliases_ o _module aliases_ son atajos o 
+alias que podemos configurar para simplificar
+la forma en la que importamos modulos en nuestra
+aplicacion
