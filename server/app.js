@@ -10,9 +10,9 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import authorRouter from './routes/author.js';
+import indexRouter from '#routes/index.js';
+import usersRouter from '#routes/users.js';
+import authorRouter from '#routes/author.js';
 var app = express();
 
 // view engine setup
