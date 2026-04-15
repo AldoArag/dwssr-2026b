@@ -1,31 +1,48 @@
-
 import createError from 'http-errors';
 import express from 'express';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import hbs from 'hbs';
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
+//importando enrutadores
 import indexRouter from '#routes/index.js';
 import usersRouter from '#routes/users.js';
 import authorRouter from '#routes/author.js';
+//Importando el registradoe de helpers
+import { registerViteHelper } from './lib/vite.js';
+
+//import app from '../app.js';
 var app = express();
+
+//Recreando variable de path
+const __filename = fileURLToPath(import.meta.url)
+const _dirname = path.dirname(_filename)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+//Registrando Helpers para el Engine
+registerViteHelper(hbs)
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+//Archivos estaticos de vite
+if(process.env.NODE.ENV === "´production"){
+  app.use(express.static(path.join(__dirname,'..','dist')));
+}
+// Archivos estaticos del backend
+app.use(express.static(path.join(__dirname,'..','public')));
 app.use(express.static(path.join(__dirname, '../public')));
+console.log("Ruta:  "+  path.join(__dirname, 'public'));
 
-app.use('/', indexRouter);
+//registrando las rutas a los enrutadores
+app.use(['/','/index'], indexRouter);
 app.use('/users', usersRouter);
 app.use('/author', authorRouter);
 
@@ -45,4 +62,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//module.exports = app;
 export default app;
