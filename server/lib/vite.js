@@ -2,8 +2,9 @@ import fs  from 'node:fs'
 import path from 'node:path'
 import{fileURLToPath} from 'node:url'
 
-const__filename= fileURLToPath(import.meta.url);
-const_dirname = path.dirname(_filename)
+// Agrega el espacio después de const
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * helper para handlebars que genera las etiquetas
@@ -62,7 +63,7 @@ let tags = '';
 
 if(mainEntry.css){
 mainEntry.css.forEach(cssFile => {
-tags += `<script type="stylesheet" src ="/${cssFile}"></script>`
+tags += `<link rel="stylesheet" src ="/${cssFile}"></script>`
 });
 
 }

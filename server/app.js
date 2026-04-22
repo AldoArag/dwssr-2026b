@@ -18,8 +18,9 @@ import { registerViteHelper } from './lib/vite.js';
 var app = express();
 
 //Recreando variable de path
-const __filename = fileURLToPath(import.meta.url)
-const _dirname = path.dirname(_filename)
+// Asegúrate de que sean DOS guiones bajos: __filename
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //Archivos estaticos de vite
-if(process.env.NODE.ENV === "´production"){
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname,'..','dist')));
 }
 // Archivos estaticos del backend
