@@ -41,3 +41,10 @@ _path aliases_ o _module aliases_ son atajos o
 alias que podemos configurar para simplificar
 la forma en la que importamos modulos en nuestra
 aplicacion
+
+# loggers
+_Winston-daily-rotate-fill_ es un transporte de winston que
+permite la rotación automatica de archivos de logs
+basada en fechas.
+
+Esto evita que los archivos de log crezcan sin control.
