@@ -4,6 +4,8 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+//importando winston Logger
+import Logger from './lib/winston.js';
 import hbs from 'hbs';
 
 
@@ -28,8 +30,14 @@ app.set('view engine', 'hbs');
 
 //Registrando Helpers para el Engine
 registerViteHelper(hbs)
-
-app.use(morgan('dev'));
+//Redirigiendo el flujo de logs de morgan
+//a winston
+//morgan ya genera ->[logs]--> Winston-->transportes
+app.use(morgan('dev',{
+  stream: {
+    write: (msg) => Logger.http(msg.trim())
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
