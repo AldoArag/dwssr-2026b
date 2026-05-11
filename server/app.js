@@ -15,9 +15,13 @@ import usersRouter from '#routes/users.js';
 import authorRouter from '#routes/author.js';
 //Importando el registradoe de helpers
 import { registerViteHelper } from './lib/vite.js';
+import logger from './lib/winston.js';
 
 //import app from '../app.js';
 var app = express();
+logger.info("Creando la instacia de express");
+logger.info("Se inicia con la instacia");
+
 
 //Recreando variable de path
 // Asegúrate de que sean DOS guiones bajos: __filename
@@ -57,12 +61,14 @@ app.use('/author', authorRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  logger.warn('Se consulto la ruta no encontrada${req.originalUrl}');
   next(createError(404));
 });
 
 // error handler
 //eslint-disable-next-line no-unused-vars
 app.use(function(err, req, res, next) {
+  logger.error(`Error ${err.status || 500} -> $(err.message)`);
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
