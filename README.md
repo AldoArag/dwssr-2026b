@@ -37,6 +37,11 @@ se desarrollara a lo largo del curso.
 |ci: 🤖|Cambios en el CI/CD |
 |revert: ⏮️|Reversion de Commits |
 
+# 📚Stack
+
+## Back-end
+- [Node](./.github/doc/node.md)
+
 **Ejemplos**
 > feat ✨:Agrega automatizacion de usuarios
 
